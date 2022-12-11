@@ -8,6 +8,7 @@ public interface StockServiceInterface {
 
     Stock addStock(Stock stock);
     Stock getStockById(Integer stockId);
+    Stock getStockByEmail(String email);
     List<Stock> getStocks();
 
 }

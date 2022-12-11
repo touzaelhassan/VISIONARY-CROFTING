@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("productServiceBean")
 public class ProductServiceClass implements ProductServiceInterface {
 
-    ProductRepository productRepository;
-    StockRepository  stockRepository;
+   private ProductRepository productRepository;
+   private StockRepository  stockRepository;
 
     public ProductServiceClass(ProductRepository productRepository, StockRepository stockRepository) {
 

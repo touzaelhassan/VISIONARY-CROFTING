@@ -3,6 +3,7 @@ package com.application.services.classes;
 import com.application.entities.Customer;
 import com.application.repositories.CustomerRepository;
 import com.application.services.interfaces.CustomerServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,17 +11,21 @@ import java.util.List;
 @Service
 public class CustomerServiceClass implements CustomerServiceInterface {
 
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepositoryBean;
 
-    public CustomerServiceClass(CustomerRepository customerRepository) { this.customerRepository = customerRepository; }
-
-    @Override
-    public Customer addCustomer(Customer customer) { return customerRepository.save(customer); }
+    @Autowired
+    public CustomerServiceClass(CustomerRepository customerRepositoryBean) { this.customerRepositoryBean = customerRepositoryBean; }
 
     @Override
-    public Customer getCustomerById(Integer customerId) { return  customerRepository.findById(customerId).orElse(null); }
+    public Customer addCustomer(Customer customer) { return customerRepositoryBean.save(customer); }
 
     @Override
-    public List<Customer> getCustomers() { return customerRepository.findAll(); }
+    public Customer getCustomerById(Integer customerId) { return  customerRepositoryBean.findById(customerId).orElse(null); }
+
+    @Override
+    public Customer getCustomerByEmail(String email) { return customerRepositoryBean.getByEmail(email); }
+
+    @Override
+    public List<Customer> getCustomers() { return customerRepositoryBean.findAll(); }
 
 }

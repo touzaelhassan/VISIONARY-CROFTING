@@ -3,20 +3,27 @@ package com.application.controllers;
 import com.application.entities.Product;
 import com.application.enums.Category;
 import com.application.services.classes.ProductServiceClass;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/products")
+@Controller
 public class ProductController {
 
     ProductServiceClass productServiceClass;
 
     public ProductController(ProductServiceClass productServiceClass) { this.productServiceClass = productServiceClass; }
 
-    @GetMapping("")
-    public List<Product> getProducts(){ return productServiceClass.getProducts(); }
+    @GetMapping("/products")
+    public String  getProducts(Model model){
+
+      List<Product> products =  productServiceClass.getProducts();
+      model.addAttribute("products", products);
+      return "products";
+
+    }
 
     @GetMapping("/product/{productId}")
     public Product getProduct(@PathVariable Integer productId){ return productServiceClass.getProductById(productId); }
