@@ -26,7 +26,7 @@ public class VisionaryCroftingApplication {
     CommandLineRunner start(
 
             CustomerServiceInterface customerServiceInterface,
-            StockServiceInterface stockServiceInterface,
+            StockServiceInterface stockServiceBean,
             ProductServiceInterface productServiceInterface,
             SupplierServiceInterface supplierServiceInterface,
             BidServiceInterface bidServiceInterface,
@@ -64,7 +64,7 @@ public class VisionaryCroftingApplication {
                 stock.setPhone("0535354637");
                 stock.setPassword("123456");
 
-                stockServiceInterface.addStock(stock);
+                stockServiceBean.addStock(stock);
 
             });
 
@@ -85,9 +85,9 @@ public class VisionaryCroftingApplication {
 
             // ADD PRODUCTS
 
-            Stock stock1 = stockServiceInterface.getStockById(1);
-            Stock stock2 = stockServiceInterface.getStockById(2);
-            Stock stock3 = stockServiceInterface.getStockById(3);
+            Stock stock1 = stockServiceBean.getStockById(1);
+            Stock stock2 = stockServiceBean.getStockById(2);
+            Stock stock3 = stockServiceBean.getStockById(3);
 
 
             Product product1 = new Product();
@@ -126,9 +126,45 @@ public class VisionaryCroftingApplication {
 
             productServiceInterface.addProduct(product3);
 
+            Product product4 = new Product();
+
+            product4.setName("product4");
+            product4.setReference("2343534");
+            product4.setDescription("Description for The product 4");
+            product4.setPrice(33F);
+            product4.setQuantity(35);
+            product4.setCategory(Category.LEGUMES);
+            product4.setStock(stock1);
+
+            productServiceInterface.addProduct(product4);
+
+            Product product5 = new Product();
+
+            product5.setName("product5");
+            product5.setReference("2343534");
+            product5.setDescription("Description for The product 5");
+            product5.setPrice(33F);
+            product5.setQuantity(35);
+            product5.setCategory(Category.FRUITS);
+            product5.setStock(stock2);
+
+            productServiceInterface.addProduct(product5);
+
+            Product product6 = new Product();
+
+            product6.setName("product6");
+            product6.setReference("2343534");
+            product6.setDescription("Description for The product 6");
+            product6.setPrice(33F);
+            product6.setQuantity(35);
+            product6.setCategory(Category.CEREALS);
+            product6.setStock(stock3);
+
+            productServiceInterface.addProduct(product6);
+
             // ADD BIDS
 
-            Stock stock4 = stockServiceInterface.getStockById(1);
+            Stock stock4 = stockServiceBean.getStockById(1);
             Supplier supplier4 = supplierServiceInterface.getSupplierById(1);
 
             Bid bid1 = new Bid();
@@ -140,7 +176,7 @@ public class VisionaryCroftingApplication {
 
             bidServiceInterface.addBid(bid1);
 
-            Stock stock5 = stockServiceInterface.getStockById(2);
+            Stock stock5 = stockServiceBean.getStockById(2);
             Supplier supplier5 = supplierServiceInterface.getSupplierById(2);
 
             Bid bid2 = new Bid();

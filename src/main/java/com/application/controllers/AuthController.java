@@ -32,9 +32,9 @@ public class AuthController {
 
        if(authServiceBean.isLoggedIn(email, password, role)){
 
-            return "index";
+           return "redirect:/home";
 
-        }else{
+       }else{
 
             return "redirect:/";
 

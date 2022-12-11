@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("stockServiceBean")
 public class StockServiceClass implements StockServiceInterface {
 
     private StockRepository stockRepositoryBean;
