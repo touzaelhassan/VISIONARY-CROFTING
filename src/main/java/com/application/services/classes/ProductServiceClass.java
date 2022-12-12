@@ -26,10 +26,6 @@ public class ProductServiceClass implements ProductServiceInterface {
     @Override
     public Product addProduct(Product product) {
 
-        Stock stock = stockRepository.findById(1).orElse(null);
-
-        product.setStock(stock);
-
         return productRepository.save(product);
 
     }

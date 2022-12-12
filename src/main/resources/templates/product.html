@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>VISIONARY CROFTING APPLICATION | SINGLE PRODUCT</title>
+</head>
+
+<body>
+
+   <div class="product">
+
+       <div class="card text-center" style="width: 18rem;">
+           <div class="product__image" th:text="${product.getName()}"></div>
+           <div class="card-body">
+               <h5 class="card-title text-capitalize" th:text="${product.getName()}"></h5>
+               <p class="card-text" th:text="${product.getDescription()}"></p>
+               <a href="#" class="btn btn-success">ADD TO CART</a>
+           </div>
+       </div>
+
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+.album{
+    height: 100vh;
+}
+
+.product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.product__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: #eee;
+    text-transform: uppercase;
+}

@@ -1,73 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>VISIONARY CROFTING APPLICATION | HOME</title>
     </head>
+
     <body>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div th:each="product:${products}">
 
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                <div th:each="product:${products}">
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                            <div class="card-body">
-                                <h3 class="card-text" th:text="${product.getName()}"></h3>
-                                <p class="card-text" th:text="${product.getDescription()}"></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="card-img-top p-5 text-center text-uppercase" th:text="${product.getName()}" style="background-color:#eee"></div>
+                                <div class="card-body">
+                                    <h4 class="card-text text-capitalize" th:text="${product.getName()}"></h4>
+                                    <p class="card-text" th:text="${product.getDescription()}"></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <a  th:href="@{'products/product/' + ${product.getId()}}" class="btn btn-sm btn-secondary">DETAILS</a>
+                                            <a  href="#" class="btn btn-sm btn-success">ADD TO CART</a>
+                                        </div>
+                                        <small class="text-muted" th:text="${product.getPrice()}"></small>
                                     </div>
-                                    <small class="text-muted" th:text="${product.getPrice()}"></small>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-      <!-- <table class="table table-bordered">
-
-           <thead>
-           <tr>
-               <th>ID</th>
-               <th>Name</th>
-               <th>Reference</th>
-               <th>Description</th>
-               <th>Price</th>
-               <th class="text-center">VIEW</th>
-               <th class="text-center">UPDATE</th>
-               <th class="text-center">DELETE</th>
-           </tr>
-           </thead>
-
-           <tbody>
-           <tr th:each="product:${products}">
-               <td th:text="${product.getId()}"></td>
-               <td th:text="${product.getName()}"></td>
-               <td th:text="${product.getReference()}"></td>
-               <td th:text="${product.getDescription()}"></td>
-               <td th:text="${product.getPrice()}"></td>
-               <td class="text-center"><a href="#" class="btn btn-sm btn-secondary">VIEW</a></td>
-               <td class="text-center"><a href="#" class="btn btn-sm btn-success">UPDATE</a></td>
-               <td class="text-center"><a href="#" class="btn btn-sm btn-danger">DELETE</a></td>
-           </tr>
-           </tbody>
-
-       </table>  -->
 
     </body>
+
 </html>

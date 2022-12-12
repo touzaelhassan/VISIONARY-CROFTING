@@ -30,13 +30,18 @@ public class AuthServiceClass implements AuthServiceInterface {
     }
 
     @Override
-    public Boolean isLoggedIn(String email, String password, String role) {
+    public Boolean isLoggedIn(String email, String password, String role , HttpSession httpSession) {
 
         if(role.equals("customer")){
 
             Customer customer = customerServiceBean.getCustomerByEmail(email);
 
             if(customer != null && customer.getPassword().equals(password)){
+
+                httpSession.setAttribute("id", customer.getId());
+                httpSession.setAttribute("name", customer.getName());
+                httpSession.setAttribute("email", customer.getEmail());
+                httpSession.setAttribute("role", "customer");
 
                 return true;
 

@@ -3,38 +3,40 @@ package com.application.controllers;
 import com.application.entities.Product;
 import com.application.enums.Category;
 import com.application.services.classes.ProductServiceClass;
+import com.application.services.interfaces.ProductServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@Controller("productControllerBean")
+@RequestMapping("/products")
 public class ProductController {
 
-    ProductServiceClass productServiceClass;
+    private ProductServiceInterface productServiceBean;
 
-    public ProductController(ProductServiceClass productServiceClass) { this.productServiceClass = productServiceClass; }
+    @Autowired
+    public ProductController(ProductServiceClass productServiceBean) { this.productServiceBean = productServiceBean; }
 
-    @GetMapping("/products")
-    public String  getProducts(Model model){
+    @GetMapping("/product/{productId}")
+    public String showProduct(@PathVariable Integer productId, Model model){
 
-      List<Product> products =  productServiceClass.getProducts();
-      model.addAttribute("products", products);
-      return "products";
+        Product product = productServiceBean.getProductById(productId);
+        model.addAttribute("product", product);
+
+        return "product";
 
     }
 
-    @GetMapping("/product/{productId}")
-    public Product getProduct(@PathVariable Integer productId){ return productServiceClass.getProductById(productId); }
-
     @GetMapping("/{category}")
-    public List<Product> getProductsByCategory(@PathVariable Category category){ return productServiceClass.getProductsByCategory(category); }
+    public List<Product> getProductsByCategory(@PathVariable Category category){ return productServiceBean.getProductsByCategory(category); }
 
     @PostMapping("/create")
-    public Product addProduct(@RequestBody Product product){ return productServiceClass.addProduct(product); }
+    public Product addProduct(@RequestBody Product product){ return productServiceBean.addProduct(product); }
 
     @PutMapping("/update/{productId}")
-    public Product addProduct(@RequestBody Product product, @PathVariable Integer productId){ return productServiceClass.updateProduct(product , productId); }
+    public Product addProduct(@RequestBody Product product, @PathVariable Integer productId){ return productServiceBean.updateProduct(product , productId); }
 
 }

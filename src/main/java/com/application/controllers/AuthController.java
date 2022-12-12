@@ -2,6 +2,7 @@ package com.application.controllers;
 
 import com.application.entities.LoginCredentials;
 import com.application.services.interfaces.AuthServiceInterface;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,18 +24,17 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    private String login(@ModelAttribute LoginCredentials loginCredentials, Model model){
+    private String login(@ModelAttribute LoginCredentials loginCredentials, Model model, HttpSession httpSession){
 
         String email = loginCredentials.getEmail();
         String password = loginCredentials.getPassword();
         String role = loginCredentials.getRole();
 
+        if(authServiceBean.isLoggedIn(email, password, role, httpSession)){
 
-       if(authServiceBean.isLoggedIn(email, password, role)){
+            return "redirect:/home";
 
-           return "redirect:/home";
-
-       }else{
+        }else{
 
             return "redirect:/";
 

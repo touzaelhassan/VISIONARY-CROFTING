@@ -25,13 +25,13 @@ public class VisionaryCroftingApplication {
     @Bean
     CommandLineRunner start(
 
-            CustomerServiceInterface customerServiceInterface,
+            CustomerServiceInterface customerServiceBean,
             StockServiceInterface stockServiceBean,
-            ProductServiceInterface productServiceInterface,
-            SupplierServiceInterface supplierServiceInterface,
-            BidServiceInterface bidServiceInterface,
-            OrderServiceInterface orderServiceInterface,
-            OrderItemServiceInterface orderItemServiceInterface
+            ProductServiceInterface productServiceBean,
+            SupplierServiceInterface supplierServiceBean,
+            BidServiceInterface bidServiceBean,
+            OrderServiceInterface orderServiceBean,
+            OrderItemServiceInterface orderItemServiceBean
 
     ){
 
@@ -48,7 +48,7 @@ public class VisionaryCroftingApplication {
                 customer.setPhone("0535354637");
                 customer.setPassword("123456");
 
-                customerServiceInterface.addCustomer(customer);
+                customerServiceBean.addCustomer(customer);
 
             });
 
@@ -79,7 +79,7 @@ public class VisionaryCroftingApplication {
                 supplier.setPhone("0535354637");
                 supplier.setPassword("123456");
 
-                supplierServiceInterface.addSupplier(supplier);
+                supplierServiceBean.addSupplier(supplier);
 
             });
 
@@ -88,7 +88,6 @@ public class VisionaryCroftingApplication {
             Stock stock1 = stockServiceBean.getStockById(1);
             Stock stock2 = stockServiceBean.getStockById(2);
             Stock stock3 = stockServiceBean.getStockById(3);
-
 
             Product product1 = new Product();
 
@@ -100,7 +99,7 @@ public class VisionaryCroftingApplication {
             product1.setCategory(Category.CEREALS);
             product1.setStock(stock1);
 
-            productServiceInterface.addProduct(product1);
+            productServiceBean.addProduct(product1);
 
             Product product2 = new Product();
 
@@ -112,7 +111,7 @@ public class VisionaryCroftingApplication {
             product2.setCategory(Category.FRUITS);
             product2.setStock(stock2);
 
-            productServiceInterface.addProduct(product2);
+            productServiceBean.addProduct(product2);
 
             Product product3 = new Product();
 
@@ -124,7 +123,7 @@ public class VisionaryCroftingApplication {
             product3.setCategory(Category.LEGUMES);
             product3.setStock(stock3);
 
-            productServiceInterface.addProduct(product3);
+            productServiceBean.addProduct(product3);
 
             Product product4 = new Product();
 
@@ -136,7 +135,7 @@ public class VisionaryCroftingApplication {
             product4.setCategory(Category.LEGUMES);
             product4.setStock(stock1);
 
-            productServiceInterface.addProduct(product4);
+            productServiceBean.addProduct(product4);
 
             Product product5 = new Product();
 
@@ -148,7 +147,7 @@ public class VisionaryCroftingApplication {
             product5.setCategory(Category.FRUITS);
             product5.setStock(stock2);
 
-            productServiceInterface.addProduct(product5);
+            productServiceBean.addProduct(product5);
 
             Product product6 = new Product();
 
@@ -160,12 +159,12 @@ public class VisionaryCroftingApplication {
             product6.setCategory(Category.CEREALS);
             product6.setStock(stock3);
 
-            productServiceInterface.addProduct(product6);
+            productServiceBean.addProduct(product6);
 
             // ADD BIDS
 
             Stock stock4 = stockServiceBean.getStockById(1);
-            Supplier supplier4 = supplierServiceInterface.getSupplierById(1);
+            Supplier supplier4 = supplierServiceBean.getSupplierById(1);
 
             Bid bid1 = new Bid();
 
@@ -174,10 +173,10 @@ public class VisionaryCroftingApplication {
             bid1.setStock(stock4);
             bid1.setSupplier(supplier4);
 
-            bidServiceInterface.addBid(bid1);
+            bidServiceBean.addBid(bid1);
 
             Stock stock5 = stockServiceBean.getStockById(2);
-            Supplier supplier5 = supplierServiceInterface.getSupplierById(2);
+            Supplier supplier5 = supplierServiceBean.getSupplierById(2);
 
             Bid bid2 = new Bid();
 
@@ -186,11 +185,11 @@ public class VisionaryCroftingApplication {
             bid2.setStock(stock5);
             bid2.setSupplier(supplier5);
 
-            bidServiceInterface.addBid(bid2);
+            bidServiceBean.addBid(bid2);
 
             // ADD ORDERS
 
-            Customer customer1 = customerServiceInterface.getCustomerById(1);
+            Customer customer1 = customerServiceBean.getCustomerById(1);
 
             Order order1 = new Order();
 
@@ -200,9 +199,9 @@ public class VisionaryCroftingApplication {
             order1.setOrderStatus(OrderStatus.PENDING);
             order1.setCustomer(customer1);
 
-            orderServiceInterface.addOrder(order1);
+            orderServiceBean.addOrder(order1);
 
-            Customer customer2 = customerServiceInterface.getCustomerById(2);
+            Customer customer2 = customerServiceBean.getCustomerById(2);
 
             Order order2 = new Order();
 
@@ -212,13 +211,13 @@ public class VisionaryCroftingApplication {
             order2.setOrderStatus(OrderStatus.PENDING);
             order2.setCustomer(customer2);
 
-            orderServiceInterface.addOrder(order2);
+            orderServiceBean.addOrder(order2);
 
             // ADD ORDER-ITEMS
 
-            Order order11 = orderServiceInterface.getOrderById(1);
+            Order order11 = orderServiceBean.getOrderById(1);
 
-            Product product11 = productServiceInterface.getProductById(1);
+            Product product11 = productServiceBean.getProductById(1);
 
             OrderItem orderItem1 = new OrderItem();
 
@@ -228,11 +227,11 @@ public class VisionaryCroftingApplication {
             orderItem1.setOrder(order11);
             orderItem1.setProduct(product11);
 
-            orderItemServiceInterface.addOrderItem(orderItem1);
+            orderItemServiceBean.addOrderItem(orderItem1);
 
-            Order order22 = orderServiceInterface.getOrderById(2);
+            Order order22 = orderServiceBean.getOrderById(2);
 
-            Product product22 = productServiceInterface.getProductById(2);
+            Product product22 = productServiceBean.getProductById(2);
 
             OrderItem orderItem2 = new OrderItem();
 
@@ -242,7 +241,8 @@ public class VisionaryCroftingApplication {
             orderItem2.setOrder(order22);
             orderItem2.setProduct(product22);
 
-            orderItemServiceInterface.addOrderItem(orderItem2);
+            orderItemServiceBean.addOrderItem(orderItem2);
+
 
         };
 
