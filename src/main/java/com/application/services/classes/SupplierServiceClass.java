@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("supplierServiceBean")
 public class SupplierServiceClass implements SupplierServiceInterface {
 
     private SupplierRepository supplierRepositoryBean;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("customerServiceBean")
 public class CustomerServiceClass implements CustomerServiceInterface {
 
     private CustomerRepository customerRepositoryBean;

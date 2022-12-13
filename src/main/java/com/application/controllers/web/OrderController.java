@@ -3,25 +3,27 @@ package com.application.controllers.web;
 
 import com.application.entities.Order;
 import com.application.services.classes.OrderServiceClass;
+import com.application.services.interfaces.OrderServiceInterface;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/orders")
 public class OrderController {
 
-    OrderServiceClass orderServiceClass;
+    private OrderServiceInterface orderServiceBean;
 
-    public OrderController(OrderServiceClass orderServiceClass) { this.orderServiceClass = orderServiceClass; }
+    public OrderController(OrderServiceInterface orderServiceBean) { this.orderServiceBean = orderServiceBean; }
 
     @GetMapping("")
-    public List<Order> getOrders(){ return orderServiceClass.getOrders(); }
+    public List<Order> getOrders(){ return orderServiceBean.getOrders(); }
 
     @GetMapping("/order/{orderId}")
-    public Order getOrder(@PathVariable Integer orderId){ return orderServiceClass.getOrderById(orderId); }
+    public Order getOrder(@PathVariable Integer orderId){ return orderServiceBean.getOrderById(orderId); }
 
     @PostMapping("/create")
-    public Order addOrder(@RequestBody Order order){ return orderServiceClass.addOrder(order); }
+    public Order addOrder(@RequestBody Order order){ return orderServiceBean.addOrder(order); }
 
 }

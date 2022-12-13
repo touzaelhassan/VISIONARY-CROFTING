@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller("productControllerBean")
+@Controller
 @RequestMapping("/products")
 public class ProductController {
 

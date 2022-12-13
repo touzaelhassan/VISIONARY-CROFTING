@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("orderItemServiceBean")
 public class OrderItemServiceClass implements OrderItemServiceInterface {
 
     OrderItemRepository orderItemRepository;

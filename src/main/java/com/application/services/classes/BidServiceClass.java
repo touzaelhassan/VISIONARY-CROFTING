@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("bidServiceBean")
 public class BidServiceClass implements BidServiceInterface {
 
     BidRepository bidRepository;

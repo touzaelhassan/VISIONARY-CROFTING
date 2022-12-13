@@ -46,6 +46,7 @@ public class Order {
     public void setTotalPrice(Float totalPrice) { this.totalPrice = totalPrice; }
     public void setOrderStatus(OrderStatus orderStatus) { this.orderStatus = orderStatus; }
     public void setCustomer(Customer customer) { this.customer = customer; }
+    public void setOrderItems(List<OrderItem> orderItems) { this.orderItems = orderItems; }
 
     public Integer getId() { return id; }
     public String getReference() { return reference; }
@@ -53,6 +54,8 @@ public class Order {
     public Float getTotalPrice() { return totalPrice; }
     public OrderStatus getOrderStatus() { return orderStatus; }
     public Customer getCustomer() { return customer; }
+    public List<OrderItem> getOrderItems() { return orderItems; }
+
 
     @Override
     public String toString() {

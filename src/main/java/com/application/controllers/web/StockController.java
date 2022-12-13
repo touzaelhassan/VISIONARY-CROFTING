@@ -2,25 +2,27 @@ package com.application.controllers.web;
 
 import com.application.entities.Stock;
 import com.application.services.classes.StockServiceClass;
+import com.application.services.interfaces.StockServiceInterface;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/stocks")
 public class StockController {
 
-    StockServiceClass stockServiceClass;
+    private StockServiceInterface stockServiceBean;
 
-    public StockController(StockServiceClass stockServiceClass) { this.stockServiceClass = stockServiceClass; }
+    public StockController(StockServiceInterface stockServiceBean) { this.stockServiceBean = stockServiceBean; }
 
     @GetMapping("")
-    public List<Stock> getStocks(){ return stockServiceClass.getStocks(); }
+    public List<Stock> getStocks(){ return stockServiceBean.getStocks(); }
 
     @GetMapping("/stock/{stockId}")
-    public Stock getStock(@PathVariable Integer stockId){ return stockServiceClass.getStockById(stockId); }
+    public Stock getStock(@PathVariable Integer stockId){ return stockServiceBean.getStockById(stockId); }
 
     @PostMapping("/create")
-    public Stock addStock(@RequestBody Stock stock){ return stockServiceClass.addStock(stock); }
+    public Stock addStock(@RequestBody Stock stock){ return stockServiceBean.addStock(stock); }
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("productControllerBeanApi")
+@RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
@@ -21,15 +21,11 @@ public class ProductController {
     public ProductController(ProductServiceInterface productServiceBean) { this.productServiceBean = productServiceBean; }
 
     @GetMapping("/")
-    List<Product> getProducts(){
+    public List<Product> getProducts(){
         return productServiceBean.getProducts();
     }
 
     @GetMapping("/product/{productId}")
-    public Product getProduct(@PathVariable Integer productId, Model model){
-        return  productServiceBean.getProductById(productId);
-
-    }
-
+    public Product getProduct(@PathVariable Integer productId, Model model){ return  productServiceBean.getProductById(productId); }
 
 }
