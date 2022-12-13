@@ -1,4 +1,4 @@
-package com.application.controllers;
+package com.application.controllers.web;
 
 import com.application.entities.LoginCredentials;
 import com.application.services.interfaces.AuthServiceInterface;

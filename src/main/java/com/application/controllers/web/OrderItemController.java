@@ -1,4 +1,4 @@
-package com.application.controllers;
+package com.application.controllers.web;
 
 import com.application.entities.OrderItem;
 import com.application.services.classes.OrderItemServiceClass;
