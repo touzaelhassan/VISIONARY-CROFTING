@@ -27,6 +27,7 @@ public class Order {
     private Customer customer ;
 
     @OneToMany(mappedBy = "order")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     List<OrderItem> orderItems = new ArrayList<>();
 
     public Order() { }

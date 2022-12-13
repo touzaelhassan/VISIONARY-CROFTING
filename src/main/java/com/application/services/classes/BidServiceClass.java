@@ -10,17 +10,17 @@ import java.util.List;
 @Service("bidServiceBean")
 public class BidServiceClass implements BidServiceInterface {
 
-    BidRepository bidRepository;
+    private BidRepository bidRepositoryBean;
 
-    public BidServiceClass(BidRepository bidRepository) { this.bidRepository = bidRepository; }
-
-    @Override
-    public Bid addBid(Bid bid) { return bidRepository.save(bid); }
+    public BidServiceClass(BidRepository bidRepository) { this.bidRepositoryBean = bidRepository; }
 
     @Override
-    public Bid getBidById(Integer bidId) { return bidRepository.findById(bidId).orElse(null);}
+    public Bid addBid(Bid bid) { return bidRepositoryBean.save(bid); }
 
     @Override
-    public List<Bid> getBids() { return bidRepository.findAll(); }
+    public Bid getBidById(Integer bidId) { return bidRepositoryBean.findById(bidId).orElse(null);}
+
+    @Override
+    public List<Bid> getBids() { return bidRepositoryBean.findAll(); }
 
 }

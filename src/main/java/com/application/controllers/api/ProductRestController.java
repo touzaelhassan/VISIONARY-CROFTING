@@ -20,12 +20,12 @@ public class ProductRestController {
     @Autowired
     public ProductRestController(ProductServiceInterface productServiceBean) { this.productServiceBean = productServiceBean; }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Product> getProducts(){
         return productServiceBean.getProducts();
     }
 
     @GetMapping("/product/{productId}")
-    public Product getProduct(@PathVariable Integer productId, Model model){ return  productServiceBean.getProductById(productId); }
+    public Product getProduct(@PathVariable Integer productId){ return  productServiceBean.getProductById(productId); }
 
 }

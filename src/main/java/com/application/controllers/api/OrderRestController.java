@@ -2,8 +2,10 @@ package com.application.controllers.api;
 
 
 import com.application.entities.Order;
+import com.application.entities.Product;
 import com.application.services.interfaces.OrderServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,10 +19,13 @@ public class OrderRestController {
     @Autowired
     public OrderRestController(OrderServiceInterface orderServiceBean) { this.orderServiceBean = orderServiceBean; }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Order> getOrders(){ return orderServiceBean.getOrders();}
 
     @PostMapping("/order/add")
     public Order saveOrder(@RequestBody Order order){ return orderServiceBean.addOrder(order); }
+
+    @GetMapping("/order/{orderId}")
+    public Order getOrder(@PathVariable Integer orderId){ return  orderServiceBean.getOrderById(orderId); }
 
 }

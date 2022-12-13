@@ -93,11 +93,11 @@
 
            placeOrderButton.addEventListener("click", function(){
 
-               fetch('http://localhost:8080/api/products/', {
+               fetch('http://localhost:8080/api/orders/order/add', {
 
                    method: 'POST',
                    headers: { 'Content-Type': 'application/json', },
-                   body: JSON.stringify(order),
+                   body: JSON.stringify(order)
 
                })
                    .then((response) => response.json())

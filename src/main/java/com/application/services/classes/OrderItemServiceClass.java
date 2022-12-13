@@ -10,17 +10,17 @@ import java.util.List;
 @Service("orderItemServiceBean")
 public class OrderItemServiceClass implements OrderItemServiceInterface {
 
-    OrderItemRepository orderItemRepository;
+    private OrderItemRepository orderItemRepositoryBean;
 
-    public OrderItemServiceClass(OrderItemRepository orderItemRepository) { this.orderItemRepository = orderItemRepository; }
-
-    @Override
-    public OrderItem addOrderItem(OrderItem orderItem) { return orderItemRepository.save(orderItem); }
+    public OrderItemServiceClass(OrderItemRepository orderItemRepository) { this.orderItemRepositoryBean = orderItemRepository; }
 
     @Override
-    public OrderItem getOrderItemById(Integer orderItemId) { return orderItemRepository.findById(orderItemId).orElse(null); }
+    public OrderItem addOrderItem(OrderItem orderItem) { return orderItemRepositoryBean.save(orderItem); }
 
     @Override
-    public List<OrderItem> getOrderItems() { return orderItemRepository.findAll(); }
+    public OrderItem getOrderItemById(Integer orderItemId) { return orderItemRepositoryBean.findById(orderItemId).orElse(null); }
+
+    @Override
+    public List<OrderItem> getOrderItems() { return orderItemRepositoryBean.findAll(); }
 
 }

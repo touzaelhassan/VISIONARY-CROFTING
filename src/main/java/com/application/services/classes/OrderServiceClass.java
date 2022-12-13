@@ -10,17 +10,17 @@ import java.util.List;
 @Service("orderServiceBean")
 public class OrderServiceClass implements OrderServiceInterface {
 
-    OrderRepository orderRepository;
+    private OrderRepository orderRepositoryBean;
 
-    public OrderServiceClass(OrderRepository orderRepository) { this.orderRepository = orderRepository; }
-
-    @Override
-    public Order addOrder(Order order) { return orderRepository.save(order); }
+    public OrderServiceClass(OrderRepository orderRepository) { this.orderRepositoryBean = orderRepository; }
 
     @Override
-    public Order getOrderById(Integer orderId) { return orderRepository.findById(orderId).orElse(null); }
+    public Order addOrder(Order order) { return orderRepositoryBean.save(order); }
 
     @Override
-    public List<Order> getOrders() { return orderRepository.findAll(); }
+    public Order getOrderById(Integer orderId) { return orderRepositoryBean.findById(orderId).orElse(null); }
+
+    @Override
+    public List<Order> getOrders() { return orderRepositoryBean.findAll(); }
 
 }
