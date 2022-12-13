@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-public class ProductController {
+public class ProductRestController {
 
     private ProductServiceInterface productServiceBean;
 
     @Autowired
-    public ProductController(ProductServiceInterface productServiceBean) { this.productServiceBean = productServiceBean; }
+    public ProductRestController(ProductServiceInterface productServiceBean) { this.productServiceBean = productServiceBean; }
 
     @GetMapping("/")
     public List<Product> getProducts(){

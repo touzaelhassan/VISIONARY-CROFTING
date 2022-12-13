@@ -10,12 +10,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderController {
+public class OrderRestController {
 
     private OrderServiceInterface orderServiceBean;
 
     @Autowired
-    public OrderController(OrderServiceInterface orderServiceBean) { this.orderServiceBean = orderServiceBean; }
+    public OrderRestController(OrderServiceInterface orderServiceBean) { this.orderServiceBean = orderServiceBean; }
 
     @GetMapping("/")
     public List<Order> getOrders(){ return orderServiceBean.getOrders();}
