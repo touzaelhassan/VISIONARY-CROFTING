@@ -57,7 +57,6 @@ public class Order {
     public Customer getCustomer() { return customer; }
     public List<OrderItem> getOrderItems() { return orderItems; }
 
-
     @Override
     public String toString() {
         return "Order{" +
@@ -68,4 +67,5 @@ public class Order {
                 ", orderStatus=" + orderStatus +
                 '}';
     }
+
 }

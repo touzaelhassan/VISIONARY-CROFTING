@@ -86,10 +86,11 @@
                date : new Date(),
                totalPrice: 444.00,
                orderStatus: "PENDING",
-               customer: "customer7",
                orderItems:[]
 
            }
+
+           cart.forEach((product)=>{ order.orderItems.push(product); })
 
            placeOrderButton.addEventListener("click", function(){
 
@@ -103,6 +104,9 @@
                    .then((response) => response.json())
                    .then((data) => {
                        console.log('Success:', data);
+                       localStorage.removeItem("cart");
+                       window.location.replace("http://localhost:8080/home");
+
                    })
                    .catch((error) => {
                        console.error('Error:', error);
